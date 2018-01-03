@@ -25,7 +25,6 @@ if __name__=='__main__':
             ret, data = c.fetch(x,'(BODY.PEEK[HEADER])')
             if ret != 'OK':
                 print('Error with message: ',x)
-                return
             print(data)
             break
     finally:
