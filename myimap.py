@@ -27,6 +27,6 @@ if __name__=='__main__':
                 print('Error with message: ',x)
                 return
             print(data)
-            break
+            return
     finally:
         c.logout()
