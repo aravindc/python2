@@ -22,7 +22,7 @@ if __name__=='__main__':
         c.select(mailbox='INBOX',readonly=True)
         result, data = c.uid('search', None, "ALL")
         for x in data[0].split():
-            ret, data = c.fetch(x,'(BODY.PEEK[HEADER])')
+            ret, data = c.fetch(x,'(RFC822)')
             if ret != 'OK':
                 print('Error with message: ',x)
             print(data)
