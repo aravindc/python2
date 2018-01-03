@@ -27,7 +27,9 @@ if __name__=='__main__':
             if ret != 'OK':
                 print('Error with message: ',x)
             msg = email.message_from_string(data[0][1])
-            print 'Message %s: %s' % (x, msg['From'])
+            hdr = email.header.make_header(email.header.decode_header(msg['Subject']))
+            subject = str(hdr)
+            print 'Message %s: %s' % (x, subject)
             break
     finally:
         c.logout()
