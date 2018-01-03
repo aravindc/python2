@@ -21,13 +21,13 @@ if __name__=='__main__':
     try:
         c.list()
         c.select(mailbox='INBOX',readonly=True)
-        result, data = c.uid('search', None, "ALL")
-        for x in data[0].split():
+        result, emdata = c.uid('search', None, "ALL")
+        for x in emdata[0].split():
             ret, data = c.fetch(x,'(RFC822)')
             if ret != 'OK':
                 print('Error with message: ',x)
             msg = email.message_from_string(data[0][1])
-            print 'Message %s: %s' % (x, msg['Subject'])
+            print 'Message %s: %s' % (x, msg['From'])
             break
     finally:
         c.logout()
