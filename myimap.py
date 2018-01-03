@@ -4,7 +4,7 @@ import os
 
 def open_connection(verbose=False):
     config = ConfigParser.ConfigParser()
-    config.read([os.path.expanduser('cred.txt')])
+    config.read([os.path.expanduser('cred.cfg')])
 
     hostname = config.get('server', 'hostname')
     username = config.get('server', 'username')
