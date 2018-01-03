@@ -15,10 +15,12 @@ def open_connection(verbose=False):
     if verbose: print('Logging in as ', username)
     connection.login(username, password)
     return connection
-
 if __name__=='__main__':
     c = open_connection(verbose=True)
     try:
-        print(c)
+        typ, data = c.list()
+        print('Response Code: ',typ)
+        print('Response: ')
+        pprint(data)
     finally:
         c.logout()
