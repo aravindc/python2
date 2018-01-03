@@ -1,6 +1,7 @@
 import imaplib
 import ConfigParser
 import os
+import email
 
 def open_connection(verbose=False):
     config = ConfigParser.ConfigParser()
@@ -25,7 +26,8 @@ if __name__=='__main__':
             ret, data = c.fetch(x,'(RFC822)')
             if ret != 'OK':
                 print('Error with message: ',x)
-            print(data)
+            msg = email.message_from_string(data[0][1])
+            print 'Message %s: %s' % (x, msg['Subject'])
             break
     finally:
         c.logout()
