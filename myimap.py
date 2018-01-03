@@ -18,8 +18,10 @@ def open_connection(verbose=False):
 if __name__=='__main__':
     c = open_connection(verbose=True)
     try:
-        typ, data = c.list()
-        print('Response Code: ', typ)
-        print('Response: ', data)
+        c.list()
+        c.select('inbox')
+        result, data = c.uid('search', None, "ALL")
+        i = len(data[0].split())
+        print('Response: ', i)
     finally:
         c.logout()
