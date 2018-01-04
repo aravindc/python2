@@ -44,7 +44,7 @@ if __name__=='__main__':
                 local_date = datetime.datetime.fromtimestamp(email.utils.mktime_tz(date_tuple))
             # print ("Local Date:", local_date.strftime("%a, %d %b %Y %H:%M:%S"))
             # print('%s|%s|%s' % (local_date.strftime("%Y-%m-%d %H:%M:%S"),fromstr, subjstr))
-            f.write('%s|%s|%s|%s\n' % x, (local_date.strftime("%Y-%m-%d %H:%M:%S"),fromstr, subjstr))
+            f.write('%s|%s|%s|%s\n' % (x,local_date.strftime("%Y-%m-%d %H:%M:%S"),fromstr, subjstr))
     finally:
         c.logout()
         f.close()
