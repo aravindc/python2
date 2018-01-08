@@ -38,9 +38,9 @@ if __name__=='__main__':
             msg = email.message_from_bytes(data[0][1])
             #print(str(msg))
             fromhdr = email.header.make_header(email.header.decode_header(msg['From']))
-            fromstr = str(fromhdr).replace('\n', ' ').replace('\r', ' ').replace('|','\|').replace('"','\"')
+            fromstr = str(fromhdr).replace('\n', ' ').replace('\r', ' ').replace('|','\|').replace('"','\\"')
             subjhdr = email.header.make_header(email.header.decode_header(msg['Subject']))
-            subjstr = str(subjhdr).replace('\n', ' ').replace('\r', ' ').replace('|','\|').replace('"','\"')
+            subjstr = str(subjhdr).replace('\n', ' ').replace('\r', ' ').replace('|','\|').replace('"','\\"')
             date_tuple = email.utils.parsedate_tz(msg['Date'])
             if date_tuple:
                 local_date = datetime.datetime.fromtimestamp(email.utils.mktime_tz(date_tuple))
