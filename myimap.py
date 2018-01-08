@@ -30,7 +30,9 @@ if __name__=='__main__':
         result, emdata = c.sort('DATE', 'UTF-8', 'ALL')
         for x in emdata[0].split():
             print('Processing: ',x)
-            ret, data = c.fetch(x,'(RFC822)')
+            if x != b'30936' and x != b'30937':
+                ret, data = c.fetch(x,'(RFC822)')
+
             if ret != 'OK':
                 print('Error with message: ',x)
             msg = email.message_from_bytes(data[0][1])
